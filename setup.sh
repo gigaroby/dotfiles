@@ -12,5 +12,8 @@ function link_file {
 
 link_file _vimrc
 
-git submodule update --init --recursive
-git submodule foreach --recursive git pull origin master
+mkdir -p bundle
+rm -rf bundle/*
+git clone https://github.com/gmarik/vundle.git bundle/vundle
+vim +BundleInstall +qall
+

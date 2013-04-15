@@ -7,7 +7,7 @@ call vundle#rc()
 "let vundle manage vundle
 Bundle 'gmarik/vundle'
 
-Bundle 'tomtom/tlib_vim'
+" Bundle 'tomtom/tlib_vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'jnwhiteh/vim-golang'
