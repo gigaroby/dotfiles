@@ -1,4 +1,17 @@
 set nocompatible " Don't be compatible with vi
+filetype off
+
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+"let vundle manage vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'tomtom/tlib_vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'jnwhiteh/vim-golang'
+
 let mapleader="," " change the leader to be a comma vs slash
 
 " Seriously, guys. It's not like :W is bound to anything anyway.
@@ -7,8 +20,8 @@ command! W :w
 " ===============================================
 " Pathogen
 " ===============================================
-filetype off
-call pathogen#infect()
+" filetype off
+" call pathogen#infect()
 
 " ===============================================
 " Basic settings
@@ -61,20 +74,20 @@ set incsearch " incremental search
 " don't outdent hashes
 inoremap # #
 
-let g:pyflakes_use_quickfix=0
+" let g:pyflakes_use_quickfix=0
 
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType="context"
+" au FileType python set omnifunc=pythoncomplete#Complete
+" let g:SuperTabDefaultCompletionType="context"
 
 set completeopt=menuone,longest,preview
 
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir=os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this=os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
+" py << EOF
+" import os.path
+" import sys
+" import vim
+" if 'VIRTUAL_ENV' in os.environ:
+"     project_base_dir=os.environ['VIRTUAL_ENV']
+"     sys.path.insert(0, project_base_dir)
+"     activate_this=os.path.join(project_base_dir, 'bin/activate_this.py')
+"     execfile(activate_this, dict(__file__=activate_this))
+" EOF
