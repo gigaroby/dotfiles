@@ -18,12 +18,6 @@ let mapleader="," " change the leader to be a comma vs slash
 command! W :w
 
 " ===============================================
-" Pathogen
-" ===============================================
-" filetype off
-" call pathogen#infect()
-
-" ===============================================
 " Basic settings
 " ===============================================
 filetype on
