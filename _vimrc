@@ -56,6 +56,7 @@ set softtabstop=4 " <BS> over an autoindent deletes both spaces.
 set expandtab " Use spaces, not tabs, for autoindent/tab key.
 set shiftround " rounds indent to a multiple of shiftwidth
 set matchpairs+=<:> " show matching <> (html mainly) as well
+set incsearch " incremental search
 
 " don't outdent hashes
 inoremap # #
