@@ -9,7 +9,6 @@ Bundle 'gmarik/vundle'
 
 " Bundle 'tomtom/tlib_vim'
 Bundle 'scrooloose/syntastic'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'jnwhiteh/vim-golang'
 
 let mapleader="," " change the leader to be a comma vs slash
@@ -26,7 +25,7 @@ filetype plugin indent on
 syntax enable
 
 set background=dark
-colorscheme solarized
+colorscheme desert
 
 set number
 set numberwidth=1
