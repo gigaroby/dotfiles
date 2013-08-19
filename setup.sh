@@ -17,3 +17,6 @@ rm -rf $dotvim/bundle/*
 git clone https://github.com/gmarik/vundle.git $dotvim/bundle/vundle
 link_file _vimrc
 vim +BundleInstall +qall
+
+#Tmux config
+link_file _tmux.conf
