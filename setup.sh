@@ -10,10 +10,10 @@ function link_file {
         ln -sf ${source} ${target}
 }
 
+# VIM stuff
+dotvim=$HOME/.vim
+mkdir -p $dotvim/bundle
+rm -rf $dotvim/bundle/*
+git clone https://github.com/gmarik/vundle.git $dotvim/bundle/vundle
 link_file _vimrc
-
-mkdir -p bundle
-rm -rf bundle/*
-git clone https://github.com/gmarik/vundle.git bundle/vundle
 vim +BundleInstall +qall
-

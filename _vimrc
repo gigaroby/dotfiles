@@ -10,6 +10,8 @@ Bundle 'gmarik/vundle'
 " Bundle 'tomtom/tlib_vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'Townk/vim-autoclose'
+Bundle 'dgryski/vim-godef'
 
 let mapleader="," " change the leader to be a comma vs slash
 
@@ -20,12 +22,19 @@ command! W :w
 " Basic settings
 " ===============================================
 filetype on
+filetype plugin on
 filetype plugin indent on
 
 syntax enable
 
+" Change color scheme
+" to something usable
 set background=dark
-colorscheme desert
+colorscheme slate
+" change really ugly autocomplete
+" menu color
+highlight Pmenu ctermfg=15 ctermbg=8
+highlight PmenuSel ctermfg=16 ctermbg=7
 
 set number
 set numberwidth=1
@@ -38,9 +47,6 @@ set wildmode=full
 set wildignore+=*.o,*.obj,.git,*.pyc
 set wildignore+=eggs/**
 set wildignore+=*.egg-info/**
-
-set foldmethod=indent
-set foldlevel=99
 
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -67,20 +73,10 @@ set incsearch " incremental search
 " don't outdent hashes
 inoremap # #
 
-" let g:pyflakes_use_quickfix=0
+au FileType go au BufWritepre <buffer> Fmt
 
-" au FileType python set omnifunc=pythoncomplete#Complete
-" let g:SuperTabDefaultCompletionType="context"
-
-set completeopt=menuone,longest,preview
-
-" py << EOF
-" import os.path
-" import sys
-" import vim
-" if 'VIRTUAL_ENV' in os.environ:
-"     project_base_dir=os.environ['VIRTUAL_ENV']
-"     sys.path.insert(0, project_base_dir)
-"     activate_this=os.path.join(project_base_dir, 'bin/activate_this.py')
-"     execfile(activate_this, dict(__file__=activate_this))
-" EOF
+" watch for changes in vimrc
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
