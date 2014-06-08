@@ -75,6 +75,9 @@ inoremap # #
 
 au FileType go au BufWritepre <buffer> Fmt
 
+let g:syntastic_cpp_compiler="clang++"
+let g:syntastic_cpp_compiler_options="-std=c++11 -stdlib=libc++"
+
 " watch for changes in vimrc
 augroup myvimrc
     au!

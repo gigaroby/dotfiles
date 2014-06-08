@@ -1,0 +1,12 @@
+[user]
+    name = Roberto Bampi
+    email = bampi.roberto@gmail.com
+
+[alias]
+    ci = commit
+    s = status
+    a = add
+    d = diff
+
+[color]
+    ui = true
