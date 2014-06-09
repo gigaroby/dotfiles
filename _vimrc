@@ -1,26 +1,27 @@
 set nocompatible " Don't be compatible with vi
 filetype off
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 "let vundle manage vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Bundle 'tomtom/tlib_vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'Townk/vim-autoclose'
-Bundle 'dgryski/vim-godef'
+Plugin 'scrooloose/syntastic'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'Townk/vim-autoclose'
+Plugin 'dgryski/vim-godef'
+Plugin 'derekwyatt/vim-fswitch'
 
-let mapleader="," " change the leader to be a comma vs slash
-
-" Seriously, guys. It's not like :W is bound to anything anyway.
-command! W :w
+call vundle#end()
 
 " ===============================================
 " Basic settings
 " ===============================================
+" Seriously, guys. It's not like :W is bound to anything anyway.
+command! W :w
+
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -52,6 +53,7 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
+nmap <silent> <F4> :FSHere<CR>
 
 """ Moving Around/Editing
 set virtualedit=block " Let cursor move past the last char in <C-v> mode

@@ -14,7 +14,7 @@ function link_file {
 dotvim=$HOME/.vim
 mkdir -p $dotvim/bundle
 rm -rf $dotvim/bundle/*
-git clone https://github.com/gmarik/vundle.git $dotvim/bundle/vundle
+git clone https://github.com/gmarik/vundle.git $dotvim/bundle/Vundle.vim
 link_file _vimrc
 vim +BundleInstall +qall
 
