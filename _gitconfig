@@ -3,6 +3,7 @@
     email = bampi.roberto@gmail.com
 
 [alias]
+    co = checkout
     ci = commit
     s = status
     a = add
