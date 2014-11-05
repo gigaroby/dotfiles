@@ -9,10 +9,15 @@ Plugin 'gmarik/Vundle.vim'
 
 " Bundle 'tomtom/tlib_vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'jnwhiteh/vim-golang'
+Plugin 'scrooloose/nerdtree'
 Plugin 'Townk/vim-autoclose'
-Plugin 'dgryski/vim-godef'
-Plugin 'derekwyatt/vim-fswitch'
+Plugin 'altercation/vim-colors-solarized'
+" snippets engine
+Plugin 'sirver/ultisnips'
+" vim-go provides go snippets
+Plugin 'fatih/vim-go'
+" latek
+Plugin 'lervag/vim-latex'
 
 call vundle#end()
 
@@ -30,12 +35,14 @@ syntax enable
 
 " Change color scheme
 " to something usable
-set background=dark
-colorscheme slate
-" change really ugly autocomplete
-" menu color
-highlight Pmenu ctermfg=15 ctermbg=8
-highlight PmenuSel ctermfg=16 ctermbg=7
+if has('gui_running')
+    set background=dark
+    colorscheme solarized
+    set guifont=Menlo\ Regular:h14
+else
+    set background=dark
+    colorscheme slate
+endif
 
 set number
 set numberwidth=1
@@ -72,6 +79,13 @@ set shiftround " rounds indent to a multiple of shiftwidth
 set matchpairs+=<:> " show matching <> (html mainly) as well
 set incsearch " incremental search
 
+set enc=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf8,prc
+
+" disable bell in GVim
+autocmd! GUIEnter * set vb t_vb=
+
 " don't outdent hashes
 inoremap # #
 
@@ -85,3 +99,10 @@ augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+
+let g:go_fmt_command = "goimports"
+let g:go_bin_path = expand("~/.goutils/bin")
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
