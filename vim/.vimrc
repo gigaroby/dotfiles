@@ -24,6 +24,8 @@ call vundle#end()
 " ===============================================
 " Basic settings
 " ===============================================
+" Get operating system name (Linux, Darwin, ...)
+let s:uname = substitute(system("uname"), '\n', '', '')
 " Seriously, guys. It's not like :W is bound to anything anyway.
 command! W :w
 
@@ -33,12 +35,18 @@ filetype plugin indent on
 
 syntax enable
 
+" Change font in gvim, mvim
+if s:uname == "Linux"
+    set guifont=Droid\ Sans\ Mono\ 11
+else
+    set guifont=Menlo\ Regular:h14
+endif
+
 " Change color scheme
 " to something usable
 if has('gui_running')
     set background=dark
     colorscheme solarized
-    set guifont=Menlo\ Regular:h14
 else
     set background=dark
     colorscheme slate
@@ -60,7 +68,6 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
-nmap <silent> <F4> :FSHere<CR>
 
 """ Moving Around/Editing
 set virtualedit=block " Let cursor move past the last char in <C-v> mode
@@ -89,16 +96,8 @@ autocmd! GUIEnter * set vb t_vb=
 " don't outdent hashes
 inoremap # #
 
-au FileType go au BufWritepre <buffer> Fmt
-
 let g:syntastic_cpp_compiler="clang++"
 let g:syntastic_cpp_compiler_options="-std=c++11 -stdlib=libc++"
-
-" watch for changes in vimrc
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
 
 let g:go_fmt_command = "goimports"
 let g:go_bin_path = expand("~/.goutils/bin")

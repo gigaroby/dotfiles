@@ -1,31 +1,22 @@
 #!/usr/bin/env bash
-# Install roberto's vimrc
 
-function link_file {
-    source="${PWD}/$1"
-    target="${HOME}/${1/_/.}"
-    if [ -e "${target}" ] && [ ! -L "${target}" ]; then
-        mv $target $target.df.bak
-    fi
-        ln -sf ${source} ${target}
-}
+stow -t $HOME git
+stow -t $HOME zsh
+stow -t $HOME vim
+stow -t $HOME tmux
 
-# VIM stuff
-dotvim=$HOME/.vim
-mkdir -p $dotvim/bundle
-rm -rf $dotvim/bundle/*
-git clone https://github.com/gmarik/Vundle.vim $dotvim/bundle/Vundle.vim
-link_file _vimrc
+echo "downloading Vundle.git"
+VIM_FOLDER=$HOME/.vim
+rm -rf $VIM_FOLDER
+mkdir -p $VIM_FOLDER/bundle
+git clone https://github.com/gmarik/Vundle.vim $VIM_FOLDER/bundle/Vundle.vim
 vim +PluginInstall +qall
 
-# Tmux config
-link_file _tmux.conf
+echo "downloading oh-my-zsh"
+OH_MY_ZSH=$HOME/.oh-my-zsh
+rm -rf $OH_MY_ZSH
+git clone https://github.com/robbyrussell/oh-my-zsh.git $OH_MY_ZSH
 
-# Oh-my-zsh
-rm -rf $HOME/.oh-my-zsh
-git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
-link_file _zshrc
-
-link_file _gitconfig
-
-git clone https://github.com/gigaroby/goproj $HOME/.goproj
+echo "downloading goproj"
+GOPROJ_FOLDER=$HOME/.goproj
+git clone https://github.com/gigaroby/goproj $GOPROJ_FOLDER
