@@ -2,11 +2,15 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="gentoo"
 
 platform=`uname`
-if [ $platform=="Linux" ]; then
-    plugins=(git git-flow pip python archlinux systemd)
-else
-    plugins=(git git-flow pip python brew)
-fi
+
+case "$platform" in
+    "Linux")
+        plugins=(git git-flow pip python archlinux systemd)
+        ;;
+    "Darwin")
+        plugins=(git git-flow pip python brew)
+        ;;
+esac
 
 source $ZSH/oh-my-zsh.sh
 
@@ -23,10 +27,13 @@ alias vim="goproj -x vim"
 alias goconvey="goproj -x goconvey"
 export GOPATH=$HOME/projects/gopath
 
-if [ $platform=="Linux" ]; then
-    alias gvim="goproj -x gvim"
-else
-    export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
-    export PATH=$PATH:$HOME/.mvim
-    alias mvim="goproj -x mvim"
-fi
+case "$platform" in
+    "Linux")
+        alias gvim="goproj -x gvim"
+        ;;
+    "Darwin")
+        export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+        export PATH=$PATH:$HOME/.mvim
+        alias mvim="goproj -x mvim"
+        ;;
+esac
