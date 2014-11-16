@@ -28,6 +28,8 @@ call vundle#end()
 let s:uname = substitute(system("uname"), '\n', '', '')
 " Seriously, guys. It's not like :W is bound to anything anyway.
 command! W :w
+" leader is comma
+let mapleader = ','
 
 filetype on
 filetype plugin on
@@ -64,10 +66,12 @@ set wildignore+=*.o,*.obj,.git,*.pyc
 set wildignore+=eggs/**
 set wildignore+=*.egg-info/**
 
+
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
+map <leader>n :NERDTreeToggle<cr>
 
 """ Moving Around/Editing
 set virtualedit=block " Let cursor move past the last char in <C-v> mode

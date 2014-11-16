@@ -19,6 +19,7 @@ export PATH=$PATH:$HOME/.goutils/bin
 
 export EDITOR="vim"
 
+alias ls="ls --color=always"
 alias cname="dig +short CNAME"
 alias a="dig +short A"
 
