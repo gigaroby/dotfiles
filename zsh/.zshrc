@@ -1,20 +1,25 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="gentoo"
 
-platform=`uname`
+platform="$(uname)"
 
 case "$platform" in
     "Linux")
         plugins=(git git-flow pip python archlinux systemd)
+        GOPATH_DIR="go"
         ;;
     "Darwin")
         plugins=(git git-flow pip python brew)
+        GOPATH_DIR="gopath"
         ;;
 esac
 
-source $ZSH/oh-my-zsh.sh
+export GOPATH="$HOME/projects/$GOPATH_DIR"
 
-export PATH=$PATH:$HOME/.goproj/bin
+
+# add gopath binaries to path
+export PATH="$PATH:$GOPATH/bin"
+# add go vim utilites to path
 export PATH=$PATH:$HOME/.goutils/bin
 
 export EDITOR="vim"
@@ -23,18 +28,20 @@ alias ls="ls --color=always"
 alias cname="dig +short CNAME"
 alias a="dig +short A"
 
-alias go="goproj -x -- go"
-alias vim="goproj -x vim"
-alias goconvey="goproj -x goconvey"
-export GOPATH=$HOME/projects/gopath
-
 case "$platform" in
     "Linux")
-        alias gvim="goproj -x gvim"
         ;;
     "Darwin")
+        # add updated coreutils to path
         export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+        # add mvim to path
         export PATH=$PATH:$HOME/.mvim
-        alias mvim="goproj -x mvim"
+        # golang
+        export PATH="$HOME/projects/go:$PATH"
+        # packer
+        export PATH=$PATH:/usr/local/bin/packer
+        source /usr/local/bin/virtualenvwrapper.sh
         ;;
 esac
+
+source $ZSH/oh-my-zsh.sh

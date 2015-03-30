@@ -18,6 +18,8 @@ Plugin 'sirver/ultisnips'
 Plugin 'fatih/vim-go'
 " latek
 Plugin 'lervag/vim-latex'
+" json
+Plugin 'elzr/vim-json'
 
 call vundle#end()
 
