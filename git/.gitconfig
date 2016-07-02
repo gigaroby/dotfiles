@@ -8,11 +8,10 @@
     s = status
     a = add
     d = diff
+    p = pull --rebase
 
 [color]
     ui = true
 
 [push]
-	default = simple
-[core]
-	quotepath = false
+    default = simple

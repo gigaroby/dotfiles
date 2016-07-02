@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
 
+NVIM_DIR="$HOME/.config/nvim"
+rm -rf $NVIM_DIR
+mkdir -p $NVIM_DIR
+
+rm -rf $HOME/.bin
+mkdir -p $HOME/.bin
+
 stow -t $HOME git
-stow -t $HOME zsh
-stow -t $HOME vim
+stow -t $HOME bash
+stow -t $HOME/.config/nvim nvim
 stow -t $HOME tmux
+stow -t $HOME/.bin bin
 
-echo "downloading Vundle.git"
-VIM_FOLDER=$HOME/.vim
-rm -rf $VIM_FOLDER
-mkdir -p $VIM_FOLDER/bundle
-git clone https://github.com/gmarik/Vundle.vim $VIM_FOLDER/bundle/Vundle.vim
-vim +PluginInstall +qall
+echo "downloading vundle"
+mkdir -p $NVIM_DIR/bundle
+git clone --depth=1 https://github.com/VundleVim/Vundle.vim "$NVIM_DIR/bundle"
+nvim +PluginInstall
 
-echo "downloading oh-my-zsh"
-OH_MY_ZSH=$HOME/.oh-my-zsh
-rm -rf $OH_MY_ZSH
-git clone https://github.com/robbyrussell/oh-my-zsh.git $OH_MY_ZSH
-
-echo "downloading goproj"
-GOPROJ_FOLDER=$HOME/.goproj
-git clone https://github.com/gigaroby/goproj $GOPROJ_FOLDER
+echo "downloading bash-it"
+git clone https://github.com/Bash-It/bash-it $HOME/.bash-it

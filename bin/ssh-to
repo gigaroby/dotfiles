@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh $(get-hostname $1) ${@:2}
