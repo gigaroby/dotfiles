@@ -9,7 +9,13 @@ unset MAILCHECK
 export SCM_CHECK=true
 source $BASH_IT/bash_it.sh
 
+# set nvim as primary editor
+export EDITOR=nvim
 alias vim=nvim
-export GOPATH="$HOME/projects/go"
-export PATH="$HOME/.go/bin:$PATH"
+
+# add ~/.bin to PATH
+export PATH=$PATH:$HOME/.bin
+
+export GOPATH=$HOME/projects/go
+export PATH=$HOME/.go/bin:$PATH
 
