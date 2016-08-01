@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # bash-it stuff
-export BASH_IT="/home/roberto/.bash_it"
+export BASH_IT="$HOME/.bash-it"
 export BASH_IT_THEME='pure'
 # Don't check mail when opening terminal.
 unset MAILCHECK
@@ -19,3 +19,4 @@ export PATH=$PATH:$HOME/.bin
 export GOPATH=$HOME/projects/go
 export PATH=$HOME/.go/bin:$PATH
 
+alias ls='ls -G'
