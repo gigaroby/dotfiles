@@ -20,3 +20,5 @@ export GOPATH=$HOME/projects/go
 export PATH=$HOME/.go/bin:$PATH
 
 alias ls='ls -G'
+
+source /usr/local/bin/virtualenvwrapper.sh
