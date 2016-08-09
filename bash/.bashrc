@@ -17,7 +17,7 @@ alias vim=nvim
 export PATH=$PATH:$HOME/.bin
 
 export GOPATH=$HOME/projects/go
-export PATH=$HOME/.go/bin:$PATH
+export PATH=$PATH:$HOME/.go/bin:$GOPATH/bin
 
 alias ls='ls -G'
 
