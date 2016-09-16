@@ -57,11 +57,14 @@ set softtabstop=4
 set expandtab
 set shiftround " rounds indent to a multiple of shiftwidth
 
+set number
+
 
 au FileType yaml set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 au FileType json set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 " for go, use tabs and don't highlight them
 au FileType go set noexpandtab nolist
+au FileType erlang set noexpandtab nolist
 
 
 " don't outdent hashes
@@ -71,3 +74,17 @@ let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
+
+
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
