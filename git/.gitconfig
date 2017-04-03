@@ -9,6 +9,7 @@
     a = add
     d = diff
     p = pull --rebase
+    log-tree = log --oneline --decorate --all --graph
 
 [color]
     ui = true
