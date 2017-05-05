@@ -7,6 +7,8 @@ end
 
 set -x GOPATH $HOME/projects/go
 set -x PATH $PATH $HOME/.go/bin $GOPATH/bin
+# random user binaries
+set -x PATH $PATH $HOME/.bin
 
 set -x EDITOR vim
 

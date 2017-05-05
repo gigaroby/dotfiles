@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [ -z $2 ]; then
-    echo "Usage: scp-to <ec2-hostname> <destination> [other-args]"
-fi
-
-scp $(get-hostname $1):$2 ${@:3}

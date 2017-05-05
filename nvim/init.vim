@@ -1,6 +1,8 @@
 set nocompatible " Don't be compatible with vi
 filetype off
 
+" necessary for vundle commands to work if shell is fish
+set shell=bash
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin('~/.config/nvim/bundle/')
 
@@ -26,8 +28,8 @@ command! W :w
 syntax enable
 
 " Change color scheme to something usable
-set background=dark 
-colorscheme slate
+set background=light
+" colorscheme slate
 
 " ignore files when completing
 set wildignore+=*.o,*.obj,.git,*.pyc
@@ -60,6 +62,7 @@ set shiftround " rounds indent to a multiple of shiftwidth
 set number
 
 
+au FileType py set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 au FileType yaml set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 au FileType json set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 " for go, use tabs and don't highlight them
